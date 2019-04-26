@@ -1,2 +1,1 @@
-# SQ-website-Testes
-cenas
+# SQ-website
