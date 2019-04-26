@@ -40,7 +40,7 @@ public class WebsiteDef {
     @Given("^I access the landing page of COS$")
     public void iAccessTheLandingPageOfCOS() throws Throwable {
         driver.get("http://35.233.19.244/");
-        assertEquals ("Welcome to nginx!",driver.getTitle());
+        assertEquals ("BASA - Architecture & Interior HTML Template",driver.getTitle());
     }
     @Then("^the title of the page should be \"([^\"]*)\"$")
     public void theTitleOfThePageShouldBe(String title) throws Throwable {
