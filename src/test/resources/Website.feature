@@ -5,4 +5,4 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page
   #no-error
   Scenario: Landing page's title and text contains "Welcome to nginx!"
     Given I access the landing page of COS
-    Then the title of the page should be "BASA - Architecture & Interior HTML Template"
+    Then the title of the page should be "test"
