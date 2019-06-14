@@ -5,7 +5,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Landing page\u0027s title and text contains \"Welcome to nginx!\"",
+  "name": "Title page should be \"test\"",
   "description": "",
   "keyword": "Scenario"
 });
@@ -13,17 +13,17 @@ formatter.before({
   "status": "passed"
 });
 formatter.step({
-  "name": "I access the landing page of COS",
+  "name": "Access to url",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "WebsiteDef.iAccessTheLandingPageOfCOS()"
+  "location": "WebsiteDef.accessToUrl()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the title of the page should be \"Welcome to nginx!\"",
+  "name": "the title of the page should be \"test\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -32,12 +32,64 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Test if ajax load contacts",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
+});
 formatter.step({
-  "name": "I can see the text \"Welcome to nginx!\"",
-  "keyword": "And "
+  "name": "Access to url",
+  "keyword": "Given "
 });
 formatter.match({
-  "location": "WebsiteDef.iCanSeeTheText(String)"
+  "location": "WebsiteDef.accessToUrl()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "check if table is populated",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "WebsiteDef.checkIfTableIsPopulated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Test if data is correctly inputed",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "Access to url",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "WebsiteDef.accessToUrl()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "check if in random position the values are correctly",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "WebsiteDef.checkIfInRandomPositionTheValuesAreCorrectly()"
 });
 formatter.result({
   "status": "passed"
