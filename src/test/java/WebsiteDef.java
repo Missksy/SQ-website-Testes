@@ -28,7 +28,7 @@ public class WebsiteDef {
     @Before
     public void setUp() {
 
-        //System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","/home/cecilia_s_sants/chrome/chromedriver76");
 
         ChromeOptions opt = new ChromeOptions();
         opt.addArguments("--headless");
