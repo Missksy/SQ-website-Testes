@@ -5,7 +5,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Title page should be \"test\"",
+  "name": "Title page should be \"Contactos\"",
   "description": "",
   "keyword": "Scenario"
 });
@@ -23,7 +23,7 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the title of the page should be \"test\"",
+  "name": "the title of the page should be \"Contactos\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -90,6 +90,47 @@ formatter.step({
 });
 formatter.match({
   "location": "WebsiteDef.checkIfInRandomPositionTheValuesAreCorrectly()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "on click button \"arrow image\" should be back to top",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "Access to url",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "WebsiteDef.accessToUrl()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I click \"arrow image\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "WebsiteDef.iClick(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the page should be back to top",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "WebsiteDef.thePageShouldBeBackToTop()"
 });
 formatter.result({
   "status": "passed"
