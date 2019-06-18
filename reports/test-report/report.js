@@ -4,10 +4,50 @@ formatter.feature({
   "description": "  As a user\n  I want to access to the URL address provided for the landing page\n  So that I can see the list of the contacts available",
   "keyword": "Feature"
 });
-formatter.scenario({
-  "name": "Title page should be \"Contactos\"",
+formatter.scenarioOutline({
+  "name": "Test if data is correctly inputed",
   "description": "",
-  "keyword": "Scenario"
+  "keyword": "Scenario Outline"
+});
+formatter.step({
+  "name": "Access to url",
+  "keyword": "Given "
+});
+formatter.step({
+  "name": "check if in random position the values are correctly \"\u003cPosition\u003e\"",
+  "keyword": "Then "
+});
+formatter.examples({
+  "name": "",
+  "description": "",
+  "keyword": "Examples",
+  "rows": [
+    {
+      "cells": [
+        "Position"
+      ]
+    },
+    {
+      "cells": [
+        "First"
+      ]
+    },
+    {
+      "cells": [
+        "Middle"
+      ]
+    },
+    {
+      "cells": [
+        "Last"
+      ]
+    }
+  ]
+});
+formatter.scenario({
+  "name": "Test if data is correctly inputed",
+  "description": "",
+  "keyword": "Scenario Outline"
 });
 formatter.before({
   "status": "passed"
@@ -23,42 +63,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the title of the page should be \"Contactos\"",
+  "name": "check if in random position the values are correctly \"First\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "WebsiteDef.theTitleOfThePageShouldBe(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.after({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Test if ajax load contacts",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.before({
-  "status": "passed"
-});
-formatter.step({
-  "name": "Access to url",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "WebsiteDef.accessToUrl()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "check if table is populated",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "WebsiteDef.checkIfTableIsPopulated()"
+  "location": "WebsiteDef.checkIfInRandomPositionTheValuesAreCorrectly(String)"
 });
 formatter.result({
   "status": "passed"
@@ -69,7 +78,7 @@ formatter.after({
 formatter.scenario({
   "name": "Test if data is correctly inputed",
   "description": "",
-  "keyword": "Scenario"
+  "keyword": "Scenario Outline"
 });
 formatter.before({
   "status": "passed"
@@ -85,11 +94,42 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "check if in random position the values are correctly",
+  "name": "check if in random position the values are correctly \"Middle\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "WebsiteDef.checkIfInRandomPositionTheValuesAreCorrectly()"
+  "location": "WebsiteDef.checkIfInRandomPositionTheValuesAreCorrectly(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Test if data is correctly inputed",
+  "description": "",
+  "keyword": "Scenario Outline"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "Access to url",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "WebsiteDef.accessToUrl()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "check if in random position the values are correctly \"Last\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "WebsiteDef.checkIfInRandomPositionTheValuesAreCorrectly(String)"
 });
 formatter.result({
   "status": "passed"

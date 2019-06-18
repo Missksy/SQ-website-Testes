@@ -11,21 +11,24 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.fail;
 
 public class WebsiteDef {
+    private static final String IP = "http://34.77.167.124/";
     private WebDriver driver;
 
     private boolean acceptNextAlert = true;
@@ -34,21 +37,22 @@ public class WebsiteDef {
     @Before
     public void setUp() {
 
-        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+        if(!System.getProperty("user.dir").contains("jenkins"))
+            System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
 
         ChromeOptions opt = new ChromeOptions();
-        opt.addArguments("--headless");
+        //opt.addArguments("--headless");
         driver = new ChromeDriver(opt);
 
         try {
-            getInformationFromDatabase("http://contactsqs2.apphb.com/Service.svc/rest/contacts");
+            contacts  = getInformationFromDatabase("http://contactsqs2.apphb.com/Service.svc/rest/contacts");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    private static void getInformationFromDatabase(String url) throws Exception {
+    private static Contact[] getInformationFromDatabase(String url) throws Exception {
         StringBuilder result = new StringBuilder();
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
         conn.setRequestMethod("GET");
@@ -63,7 +67,7 @@ public class WebsiteDef {
 
         String jsonStr = result.toString();
         Gson gson = new Gson();
-        contacts = gson.fromJson(jsonStr, Contact[].class);
+        return gson.fromJson(jsonStr, Contact[].class);
     }
 
     @After
@@ -87,7 +91,7 @@ public class WebsiteDef {
 
     @Given("^Access to url$")
     public void accessToUrl() {
-        driver.get("http://35.195.187.244/");
+        driver.get(IP);
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.titleIs("Contactos"));
         assertEquals ("Contactos", driver.getTitle());
@@ -120,30 +124,107 @@ public class WebsiteDef {
 //        checkValues(3, driver.findElements(By.xpath(".//table[@id='Contacts']/tbody/tr[3]/td")));
 //    }
 
-    @Then("^check if in random position the values are correctly$")
-    public void checkIfInRandomPositionTheValuesAreCorrectly() {
-        // WebDriverWait wait = new WebDriverWait(driver, 6);
+//    @Then("^check if in random position the values are correctly$")
+//    public void checkIfInRandomPositionTheValuesAreCorrectly() {
+//        // WebDriverWait wait = new WebDriverWait(driver, 6);
+//        checkIfTableIsPopulated();
+//        if(driver.findElement(By.xpath(".//table[@id='Contacts']/thead/tr/th[1]")).getClass().toString() == "sorting_asc"){
+//            checkValues(3, driver.findElements(By.xpath(".//table[@id='Contacts']/tbody/tr[3]/td")));
+//        }else{
+//            fail("Error - path is not correctly");
+//        }
+//    }
+
+
+    @Then("^check if in random position the values are correctly \"([^\"]*)\"$")
+    public void checkIfInRandomPositionTheValuesAreCorrectly(String position) throws Throwable {
+        WebDriverWait wait = new WebDriverWait(driver, 6);
+        // check if has elements in table
         checkIfTableIsPopulated();
-        if(driver.findElement(By.xpath(".//table[@id='Contacts']/thead/tr/th[1]")).getClass().toString() == "sorting_asc"){
-            checkValues(3, driver.findElements(By.xpath(".//table[@id='Contacts']/tbody/tr[3]/td")));
-        }else{
-            checkValues(3, driver.findElements(By.xpath(".//table[@id='Contacts']/tbody/tr[3]/td")));
+
+        // get position in BD to verify
+        int p = 0;
+        switch (position){
+            case "First":
+                p = 0;
+                break;
+            case "Middle":
+                p = (int) Math.floor(contacts.length / 2);
+                break;
+            case "Last":
+                p = contacts.length -1;
+                break;
+            default:
+                fail("Position not recognize");
+                break;
         }
+
+        // get number of clicks in pagination "Next" except if value is "0"
+        int numberOfNextClick = 0;
+        if(p != 0){
+            numberOfNextClick = Integer.parseInt(String.valueOf(p).substring(0, String.valueOf(p).length() - 1));
+        }
+        Thread.sleep(1000);
+        // get xpath of element "next"
+        //WebElement paginationNext = driver.findElement(By.xpath(".//li[@id='Contacts_next']/a"));
+        WebElement paginationNext = driver.findElement(By.xpath(".//li[@id='Contacts_next']"));
+        // check if element is not null
+        if(paginationNext != null){
+
+            //Get number of click to perform on "Next Button", get the rowNumber on the Table to verify against the contact
+            int rowNumber = 0;
+            if(String.valueOf(p).length() == 1){
+                rowNumber = p + 1;
+            } else {
+                if (Integer.parseInt(String.valueOf(p).substring(String.valueOf(p).length() - 1)) == 0) {
+                    rowNumber = 10;
+                    numberOfNextClick--;
+                } else {
+                    rowNumber = Integer.parseInt(String.valueOf(p).substring(String.valueOf(p).length() - 1)) + 1;
+                }
+            }
+
+            //get first element of the header
+            WebElement orderByName = driver.findElement(By.xpath(".//table[@id='Contacts']/thead/tr/th[1]"));
+
+            if(orderByName != null) {
+
+                //Is it ordered by asc?
+                if (!orderByName.getClass().toString().equals("sorting_asc")) {
+                    //make it order by asc
+                    do {
+                        orderByName.click();
+                    } while (orderByName.getClass().toString().equals("sorting_asc"));
+                }
+
+                //Click X times
+                for(int i = 0; i < numberOfNextClick; i++ ){
+                    driver.findElement(By.xpath(".//li[@id='Contacts_next']")).click();
+                    Thread.sleep(100);
+                }
+
+                //Verify value
+                checkValues(p, driver.findElements(By.xpath(".//table[@id='Contacts']/tbody/tr[" + rowNumber + "]/td")));
+
+            }else{
+                fail("Error - xpath is null");
+            }
+        }else {
+            fail("Error - xpath is null");
+        }
+
+
     }
 
     private void checkValues(int position, List<WebElement> elements) {
-       // Collections.sort(contacts);
-        Collections.sort(Arrays.asList(contacts), new Comparator<Contact>(){
-            public int compare(Contact s1, Contact s2) {
-                return s1.getGivenName().compareToIgnoreCase(s2.getGivenName());
-            }
-        });
-
-        assertEquals(elements.get(0).getText(), contacts[position - 1].getGivenName());
-        assertEquals(elements.get(1).getText(), contacts[position - 1].getSurname());
-        assertEquals(elements.get(2).getText(), contacts[position - 1].getEmail());
-        assertEquals(elements.get(3).getText(), contacts[position - 1].getPhone().toString());
-        assertEquals(elements.get(4).getText(), contacts[position - 1].getSource());
+        // Collections.sort(contacts);
+        Arrays.asList(contacts).sort((s1, s2) ->  s2.getGivenName().compareToIgnoreCase(s1.getGivenName()));
+        
+        assertEquals(elements.get(0).getText(), contacts[position].getGivenName());
+        assertEquals(elements.get(1).getText(), contacts[position].getSurname());
+        assertEquals(elements.get(2).getText(), contacts[position].getEmail());
+        assertEquals(elements.get(3).getText(), contacts[position].getPhone().toString());
+        assertEquals(elements.get(4).getText(), contacts[position].getSource());
     }
 
 
@@ -158,4 +239,122 @@ public class WebsiteDef {
         driver.findElement(By.className("btn-pushToTop")).click();
         js.executeScript("window.scrollTo(0,0);");
     }
+
+
+    @Then("^the table should be filter by option selected \"([^\"]*)\"$")
+    public void theTableShouldBeFilterByOptionSelected(String filter) throws Throwable {
+        Contact[] filterContacts = null;
+
+        if(filter.equals("0")){
+            filterContacts = contacts;
+        }else {
+            try {
+                filterContacts = getInformationFromDatabase("http://contactsqs2.apphb.com/Service.svc/rest/contacts/bysource/" + filter);
+            } catch (Exception e) {
+                e.printStackTrace();
+                fail("Error on filtering contacts:" + filter);
+            }
+        }
+        // check if table has values
+        checkIfTableIsPopulated();
+
+        // Get xpath of select box  by source
+        List<WebElement> select = driver.findElements(By.xpath(".//select[@id='FilterBySource']"));
+
+        if(!select.isEmpty()){
+            //Get values of select box
+            Select selectBox = new Select(select.get(0));
+            selectBox.selectByValue(filter);
+            Thread.sleep(500);
+
+            //wait until table destroy and create another with data
+            checkIfTableIsPopulated();
+
+            List<String> chunks = new LinkedList<String>();
+            Matcher matcher = Pattern.compile("[0-9]+|[A-Z]+").matcher(driver.findElement(By.xpath(".//div[@id='Contacts_info']")).getText());
+            while (matcher.find()) {
+                chunks.add( matcher.group() );
+            }
+            if(chunks.isEmpty()){
+                fail("chunks came empty. Verify if the XPath is correct");
+            }else{
+                assertEquals(filterContacts.length, Integer.parseInt(chunks.get(chunks.size() - 1)));
+            }
+        }else{
+            //Error!
+            fail("Error - path is not correctly");
+        }
+    }
+
+
+    // check if keyword is equal to value of each column
+    public List<Contact> filterContact (String keyword){
+        return Arrays.stream(contacts).filter(
+                contact -> (
+                        (contact.getGivenName().toLowerCase().contains(keyword.toLowerCase()) ||
+                                contact.getSurname().toLowerCase().contains(keyword.toLowerCase()) ||
+                                contact.getEmail().toLowerCase().contains(keyword.toLowerCase()) ||
+                                contact.getPhone().toString().equals(keyword) ||
+                                contact.getSource().toLowerCase().contains(keyword.toLowerCase()))
+                )).collect(Collectors.toList());
+    }
+
+    @When("^I search \"([^\"]*)\"$")
+    public void iSearch(String keyword) throws Throwable {
+        //wait for element load
+        checkIfTableIsPopulated();
+
+        // give the xpath of input search
+        String xPath = ".//div[@id='Contacts_filter']/label/input";
+
+        // verify if exists
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until((ExpectedConditions.elementToBeClickable(By.xpath(xPath))));
+
+
+        // find element and write on input search
+        WebElement searchBar = driver.findElement(By.xpath(xPath));
+        searchBar.sendKeys(keyword);
+        wait.until((ExpectedConditions.textToBePresentInElementValue(By.xpath(xPath), keyword)));
+    }
+
+    @Then("^the result on table should be only the values in columns that just searched, related to \"([^\"]*)\"$")
+    public void theResultOnTableShouldBeOnlyTheValuesInColumnsThatJustSearchedRelatedTo(String keyword) throws Throwable {
+
+        //write text on search bar input
+        LinkedList<Contact> filterContacts = new LinkedList<>(filterContact(keyword));
+
+        // check number of results in table after filter in input search
+        List<String> chunks = new LinkedList<String>();
+        Matcher matcher = Pattern.compile("[0-9]+|[A-Z]+").matcher(driver.findElement(By.xpath(".//div[@id='Contacts_info']")).getText());
+        while (matcher.find()) {
+            chunks.add( matcher.group() );
+        }
+        if(!chunks.isEmpty()){
+            assertEquals(filterContacts.size(), Integer.parseInt(chunks.get(chunks.size() - 2)));
+
+            List<WebElement> list = driver.findElements(By.xpath(".//table[@id='Contacts']/tbody/tr"));
+
+            if(!list.isEmpty()){
+                for(int i = 0; i <= 5 && i < Integer.parseInt(chunks.get(chunks.size() - 2)); i++ ){
+
+                    List<WebElement> tds = list.get(i).findElements(By.xpath("td"));
+                    boolean hasResult = false;
+                    for(int j = 0; j < tds.size(); j++){
+                        if(tds.get(j).getText().toLowerCase().contains(keyword.toLowerCase())){
+                            hasResult = true;
+                        }
+                    }
+                    if(!hasResult){
+                        fail("Found a contact with wrong filter");
+                    }
+                }
+            }else{
+                fail("List came Empty. Verify if the XPath is correct");
+            }
+        }else{
+            fail("chunks came empty. Verify if the XPath is correct");
+        }
+    }
+
 }
