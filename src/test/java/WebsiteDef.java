@@ -41,7 +41,7 @@ public class WebsiteDef {
             System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
 
         ChromeOptions opt = new ChromeOptions();
-        //opt.addArguments("--headless");
+        opt.addArguments("--headless");
         driver = new ChromeDriver(opt);
 
         try {

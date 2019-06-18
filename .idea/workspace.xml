@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eea76920-811a-4df8-811e-a8474e9a3bde" name="Default Changelist" comment="QS test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/test-report/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/reports/test-report/report.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/WebsiteDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebsiteDef.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/Website.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Website.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/CucumberRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/CucumberRunner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Model/Contact.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Model/Contact.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/Website.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Website.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/WebsiteDef$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/WebsiteDef.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/WebsiteDef.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/resources/Website.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+            <state relative-caret-position="136">
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -41,13 +33,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/WebsiteDef.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-57">
-              <caret line="182" column="84" lean-forward="true" selection-start-line="182" selection-start-column="84" selection-end-line="182" selection-end-column="84" />
+            <state relative-caret-position="-4565">
+              <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2454#2455#0" expanded="true" />
                 <element signature="e#2484#2485#0" expanded="true" />
-                <element signature="e#8791#8792#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,8 +80,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/Model/Contact.java" />
         <option value="$USER_HOME$/Desktop/WebsiteDef.java" />
-        <option value="$PROJECT_DIR$/src/test/resources/Website.feature" />
         <option value="$PROJECT_DIR$/src/test/java/WebsiteDef.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/Website.feature" />
       </list>
     </option>
   </component>
@@ -101,7 +92,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -153,8 +144,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -265,6 +256,7 @@
       <workItem from="1560796069475" duration="9404000" />
       <workItem from="1560811219841" duration="3713000" />
       <workItem from="1560880007092" duration="13805000" />
+      <workItem from="1560896654874" duration="74000" />
     </task>
     <task id="LOCAL-00001" summary="QS test">
       <created>1556312395808</created>
@@ -337,7 +329,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65920000" />
+    <option name="totallyTimeSpent" value="65994000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -352,7 +344,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49835527" visible="true" weight="0.19509594" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49835527" visible="true" weight="0.19722815" />
       <window_info id="Structure" order="1" sideWeight="0.50164473" side_tool="true" weight="0.19509594" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -391,22 +383,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="QS test" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/WebsiteDef.java</url>
-          <line>342</line>
-          <properties />
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/WebsiteDef.java</url>
-          <line>345</line>
-          <properties />
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="p" language="JAVA" />
@@ -651,20 +627,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/Website.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/WebsiteDef.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="182" column="84" lean-forward="true" selection-start-line="182" selection-start-column="84" selection-end-line="182" selection-end-column="84" />
+        <state relative-caret-position="-4565">
+          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2454#2455#0" expanded="true" />
             <element signature="e#2484#2485#0" expanded="true" />
-            <element signature="e#8791#8792#0" expanded="true" />
           </folding>
         </state>
       </provider>
