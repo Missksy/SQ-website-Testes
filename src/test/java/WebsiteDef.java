@@ -42,6 +42,7 @@ public class WebsiteDef {
 
         ChromeOptions opt = new ChromeOptions();
         opt.addArguments("--headless");
+        opt.addArguments("--window-size=1920,1080");
         driver = new ChromeDriver(opt);
 
         try {
@@ -139,6 +140,10 @@ public class WebsiteDef {
     @Then("^check if in random position the values are correctly \"([^\"]*)\"$")
     public void checkIfInRandomPositionTheValuesAreCorrectly(String position) throws Throwable {
         WebDriverWait wait = new WebDriverWait(driver, 6);
+        String xPath = "//li[@id='Contacts_next']/a";
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
+
+
         // check if has elements in table
         checkIfTableIsPopulated();
 
@@ -167,7 +172,8 @@ public class WebsiteDef {
         Thread.sleep(1000);
         // get xpath of element "next"
         //WebElement paginationNext = driver.findElement(By.xpath(".//li[@id='Contacts_next']/a"));
-        WebElement paginationNext = driver.findElement(By.xpath(".//li[@id='Contacts_next']"));
+
+        WebElement paginationNext = driver.findElement(By.xpath(xPath));
         // check if element is not null
         if(paginationNext != null){
 
@@ -198,9 +204,15 @@ public class WebsiteDef {
                 }
 
                 //Click X times
+                WebElement element;
                 for(int i = 0; i < numberOfNextClick; i++ ){
-                    driver.findElement(By.xpath(".//li[@id='Contacts_next']")).click();
-                    Thread.sleep(100);
+                    //driver.findElement(By.xpath(".//li[@class='.page-item.next']/a")).click();
+                    element = driver.findElement(By.xpath(xPath));
+                    if(element != null){
+                        element.click();
+                    }else{
+                        fail("asd");
+                    }
                 }
 
                 //Verify value

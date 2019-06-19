@@ -32,11 +32,11 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page
         | Middle    |
         | Last      |
 
-  Scenario: on click button "arrow image" should be back to top
-    Given Access to url
-    When I click "arrow image"
-    Then the page should be back to top
-
+#  Scenario: on click button "arrow image" should be back to top
+#    Given Access to url
+#    When I click "arrow image"
+#    Then the page should be back to top
+#
 #  Scenario Outline:  On select option should filter by source
 #    Given Access to url
 #    Then the table should be filter by option selected "<Filter>"

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eea76920-811a-4df8-811e-a8474e9a3bde" name="Default Changelist" comment="QS test">
+      <change beforePath="$PROJECT_DIR$/reports/test-report/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/reports/test-report/report.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/WebsiteDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebsiteDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/Website.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Website.feature" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,24 +21,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/resources/Website.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="221">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="21" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/WebsiteDef.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4565">
-              <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
+            <state relative-caret-position="442">
+              <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2454#2455#0" expanded="true" />
-                <element signature="e#2484#2485#0" expanded="true" />
+                <element signature="e#9208#9209#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,6 +63,7 @@
       <find>checkIfTableIsPopulated</find>
       <find>keyword</find>
       <find>checkValues</find>
+      <find>Contacts_next</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -102,6 +102,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,8 +146,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -257,6 +257,7 @@
       <workItem from="1560811219841" duration="3713000" />
       <workItem from="1560880007092" duration="13805000" />
       <workItem from="1560896654874" duration="74000" />
+      <workItem from="1560966427163" duration="3130000" />
     </task>
     <task id="LOCAL-00001" summary="QS test">
       <created>1556312395808</created>
@@ -297,39 +298,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 26m 24s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 29m 17s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 27m 40s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 30m 57s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 28m 09s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 32m 31s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 28m 45s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 33m 14s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 30m 17s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 39m 03s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 32m 53s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 40m 29s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 33m 26s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 40m 55s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 34m 56s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 41m 55s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 35m 34s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 42m 39s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.18 at 22h 36m 11s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.19 at 19h 44m 39s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65994000" />
+    <option name="totallyTimeSpent" value="69124000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -344,7 +345,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49835527" visible="true" weight="0.19722815" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49835527" visible="true" weight="0.19936034" />
       <window_info id="Structure" order="1" sideWeight="0.50164473" side_tool="true" weight="0.19509594" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -385,18 +386,44 @@
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="JUnit">
-        <watch expression="p" language="JAVA" />
-        <watch expression="driver.findElements(By.xpath(&quot;.//table[@id='Contacts']/tbody/tr[9]/td&quot;)).get(0).toString()" language="JAVA" custom="java.sql.Driver" />
-        <watch expression="driver.findElement(By.xpath(&quot;.//table[@id='Contacts']/tbody/tr[9]/td[2]&quot;)).getText()" language="JAVA" custom="java.sql.Driver" />
-        <watch expression="contacts[p]" language="JAVA" />
-        <watch expression="driver.findElements(By.xpath(&quot;.//table[@id='Contacts']/tbody/tr[&quot; + rowNumber + &quot;]/td&quot;)).get(0).getText()" language="JAVA" />
-        <watch expression="numberOfNextClick" language="JAVA" />
-        <watch expression="rowNumber" language="JAVA" />
+        <watch expression="driver.findElement(By.xpath(&quot;.//li[@id='Contacts_next']/a&quot;)).getText()" language="JAVA" />
+        <watch expression="driver.getPageSource()" language="JAVA" />
+        <watch expression="driver.findElement(By.xpath(&quot;//li[@id='Contacts_next']/a&quot;))" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>driver.findElement(By.xpath(&quot;//li[@id='Contacts_next']/a&quot;))</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>driver.findElement(By.xpath(&quot;//li[@id='Contacts_next']/a&quot;)).getText()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>driver.getPageSource()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>driver.getCurrentUrl()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>driver.findElement(By.xpath(&quot;.//li[@id='Contacts_next']/a&quot;)).getText()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>driver.findElement(By.xpath(&quot;.//li[@id='Contacts_next']/a&quot;))</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>rowNumber</expression-string>
         <language-id>JAVA</language-id>
@@ -410,42 +437,6 @@
       <expression>
         <expression-string>driver.findElements(By.xpath(&quot;.//table[@id='Contacts']/tbody/tr[&quot; + rowNumber + &quot;]/td&quot;)).get(0).getText()</expression-string>
         <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>driver.findElements(By.xpath(&quot;.//table[@id='Contacts']/tbody/tr[&quot; + rowNumber + &quot;]/td&quot;))</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>contacts[p]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>contacts[position ]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>contacts[position - 1]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>contacts[p - 1]</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>p - 1</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>driver.findElement(By.xpath(&quot;.//table[@id='Contacts']/tbody/tr[9]/td[2]&quot;)).getText()</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>java.sql.Driver</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
@@ -502,20 +493,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/Website.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/WebsiteDef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="190" column="34" selection-start-line="190" selection-start-column="27" selection-end-line="190" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Website.feature" />
+    <entry file="file://$USER_HOME$/Desktop/WebsiteDef.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/util/function/Predicate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-757">
@@ -625,22 +604,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/Website.feature">
+    <entry file="file://$PROJECT_DIR$/src/test/java/WebsiteDef.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="442">
+          <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9208#9209#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/WebsiteDef.java">
+    <entry file="file://$PROJECT_DIR$/src/test/resources/Website.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4565">
-          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2454#2455#0" expanded="true" />
-            <element signature="e#2484#2485#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="21" selection-end-column="36" />
         </state>
       </provider>
     </entry>
