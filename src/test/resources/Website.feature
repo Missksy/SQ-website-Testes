@@ -3,6 +3,7 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page
   I want to access to the URL address provided for the landing page
   So that I can see the list of the contacts available
 
+ #############################################################
 #  Scenario: Title page should be "test"
 #    Given Access to url
 #    Then the title of the page should be "test"
@@ -10,7 +11,7 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page
 #  Scenario: Test if data is correctly inputed
 #    Given Access to url
 #    Then check if in random position the values are correctly
-
+ #############################################################
 
 
   Scenario: Title page should be "Contactos"
@@ -34,7 +35,7 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page
 
   Scenario: on click button "arrow image" should be back to top
     Given Access to url
-    When I click "arrow image"
+    When I click arrow image
     Then the page should be back to top
 
   Scenario Outline:  On select option should filter by source
@@ -62,3 +63,17 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page
       | 234914037                     |
       | LinkedIn                      |
       | SophiaPereiraLima@teleworm.us |
+
+  Scenario: on click button "ver mais" on table should be go details contact
+    Given Access to url
+    When I click button "ver mais"
+    Then Should be go details page and show the details of contact by request "guid"
+
+
+ #############################################################
+ #  DETAILS TESTS                                            #
+ #############################################################
+
+  Scenario: Title of detail page should be "Detalhes de Contacto"
+    Given Access to url of detail
+    Then the title of the detail page should be "Detalhes de Contacto"

@@ -33,6 +33,8 @@ public class WebsiteDef {
 
     private boolean acceptNextAlert = true;
     private static Contact[] contacts = null;
+    private static Contact contact = null;
+    private  static  String linkGuid =  "";
 
     @Before
     public void setUp() {
@@ -71,24 +73,30 @@ public class WebsiteDef {
         return gson.fromJson(jsonStr, Contact[].class);
     }
 
+    private static Contact getDetailInforFromDB(String url) throws Exception {
+        StringBuilder result = new StringBuilder();
+        HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("Accept", "application/json");
+        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String line;
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
+        }
+        rd.close();
+
+        String jsonStr = result.toString();
+        Gson gson = new Gson();
+        return gson.fromJson(jsonStr, Contact.class);
+    }
+
+
     @After
     public void tearDown() {
         driver.close();
     }
 
-
-//    @Given("^I access the landing page of COS$")
-//    public void iAccessTheLandingPageOfCOS() throws Throwable {
-//        driver.get("http://34.76.104.159/");
-//        assertEquals ("test",driver.getTitle());
-//    }
-
-    @And("^I can see the text \"([^\"]*)\"$")
-    public void iCanSeeTheText(String text) throws Throwable {
-        WebDriverWait wait = new WebDriverWait(driver, 3);
-        wait.until(ExpectedConditions.textToBePresentInElement(
-                driver.findElement(By.tagName("body")),text));
-    }
 
     @Given("^Access to url$")
     public void accessToUrl() {
@@ -106,15 +114,10 @@ public class WebsiteDef {
 
     @Then("^check if table is populated$")
     public void checkIfTableIsPopulated() {
-
         //wait until...
         WebDriverWait wait = new WebDriverWait(driver, 6);
 
-        //if id Contact exists
-        // test type 1
-        //wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.id("Contacts"), 0));
-
-        // test type 2
+        // check if exist
         wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath(".//table[@id='Contacts']/tbody/tr"), 0));
     }
 
@@ -239,19 +242,17 @@ public class WebsiteDef {
         assertEquals(elements.get(4).getText(), contacts[position].getSource());
     }
 
+    @When("^I click arrow image$")
+    public void iClickArrowImage() {
+        WebElement button = driver.findElement(By.className("btn-pushToTop"));
+        button.click();
+    }
 
     @Then("^the page should be back to top$")
     public void thePageShouldBeBackToTop() {
-        driver.findElement(By.className("btn-pushToTop"));
-    }
-
-    @When("^I click \"([^\"]*)\"$")
-    public void iClick(String arg0) throws Throwable {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        driver.findElement(By.className("btn-pushToTop")).click();
         js.executeScript("window.scrollTo(0,0);");
     }
-
 
     @Then("^the table should be filter by option selected \"([^\"]*)\"$")
     public void theTableShouldBeFilterByOptionSelected(String filter) throws Throwable {
@@ -368,5 +369,88 @@ public class WebsiteDef {
             fail("chunks came empty. Verify if the XPath is correct");
         }
     }
+
+
+    @When("^I click button \"([^\"]*)\"$")
+    public void iClickButton(String button) throws Throwable {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        // get path of button
+        String xPath =".//a[contains(text(),'ver mais')]";
+
+        // check button
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
+
+        // confirm name button
+        assertEquals("ver mais", button);
+
+        // get attribute href
+        WebElement link = driver.findElement(By.xpath(xPath));
+        linkGuid = link.getAttribute("href");
+
+        // click button
+        link.click();
+       // driver.findElement(By.xpath(xPath)).click();
+
+    }
+
+    @Then("^Should be go details page and show the details of contact by request \"([^\"]*)\"$")
+    public void shouldBeGoDetailsPageAndShowTheDetailsOfContactByRequest(String guid) throws Throwable {
+        //  driver.get(IP +"details.html?guid=" + guid);
+        Contact contactsByGuid = null;
+
+        // get request query string guid and split by "=" and get last part of queryString
+        if(linkGuid.length()> 0) {
+            URL guidIdentify = new URL(linkGuid);
+            guid = guidIdentify.getQuery().split("=")[1].toString();
+            System.out.println(guid);
+            if(guid.equals("0")){
+                contactsByGuid = contact;
+            }else {
+                try {
+                    contactsByGuid = getDetailInforFromDB("http://contactsqs2.apphb.com/Service.svc/rest/contact/byguid/" + guid);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    fail("Error on get guid contact:" + guid);
+                }
+            }
+
+            if(!contactsByGuid.equals(0)){
+                if(contactsByGuid.getGuid() == guid){
+                    assertEquals(contactsByGuid.getGuid().toString(), guid);
+                    assertEquals(IP +"details.html?guid=" + guid, linkGuid);
+                }
+            }else{
+                fail("Error on get guid contact:" + guid);
+            }
+        }else {
+            //Error!
+            fail("Error - not found guid");
+        }
+
+
+    }
+
+
+
+
+
+    // DETAILS PAGE
+
+    @Given("^Access to url of detail$")
+    public void accessToUrlOfDetail() {
+        driver.get(IP +"details.html");
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.titleIs("Detalhes de Contacto"));
+        assertEquals ("Detalhes de Contacto", driver.getTitle());
+
+    }
+
+    @Then("^the title of the detail page should be \"([^\"]*)\"$")
+    public void theTitleOfTheDetailPageShouldBe(String title) throws Throwable {
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.titleContains(title));
+    }
+
+
 
 }
