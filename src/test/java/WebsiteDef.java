@@ -1,9 +1,7 @@
 import Model.Contact;
 import com.google.gson.Gson;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -17,6 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -28,7 +27,7 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
 public class WebsiteDef {
-    private static final String IP = "http://34.77.167.124/";
+    private static final String IP = "http://34.77.8.124/";
     private WebDriver driver;
 
     private boolean acceptNextAlert = true;
@@ -426,8 +425,6 @@ public class WebsiteDef {
             //Error!
             fail("Error - not found guid");
         }
-
-
     }
 
 
@@ -451,6 +448,25 @@ public class WebsiteDef {
         wait.until(ExpectedConditions.titleContains(title));
     }
 
+    @Then("^I should be see photo of contact$")
+    public void iShouldBeSeePhotoOfContact() throws MalformedURLException {
+        driver.get(IP +"details.html?guid=e829ec04-e333-42a3-a380-28876b28472a");
 
+        WebDriverWait wait = new WebDriverWait(driver, 3);
 
+        // if ajax down load yet, show avatar foto
+        String xPath = "//section[@id='Section_top']/figure/div/img";
+        wait.until( ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
+
+        URL linkPhoto = new URL(driver.findElement(By.xpath(xPath)).getAttribute("src"));
+        if (!driver.getCurrentUrl().contains("guid")) {
+            String urlWebsite = linkPhoto.getPath().split("/")[2].toString();
+            assertEquals("profile.png", urlWebsite);
+        }else{
+            // if ajax load, check if photo exists
+            String urlWebsite = linkPhoto.getHost().toString();
+            assertEquals(urlWebsite, "randomuser.me");
+        }
+
+    }
 }
