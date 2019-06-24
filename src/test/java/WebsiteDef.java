@@ -5,7 +5,10 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,22 +20,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-
+import static java.util.Arrays.stream;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
 public class WebsiteDef {
-    private static final String IP = "http://34.77.8.124/";
+    private static final String IP = "http://130.211.57.242/";
     private WebDriver driver;
 
-    private boolean acceptNextAlert = true;
     private static Contact[] contacts = null;
-    private static Contact contact = null;
     private  static  String linkGuid =  "";
 
     @Before
@@ -106,7 +109,7 @@ public class WebsiteDef {
     }
 
     @Then("^the title of the page should be \"([^\"]*)\"$")
-    public void theTitleOfThePageShouldBe(String title) throws Throwable {
+    public void theTitleOfThePageShouldBe(String title) {
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.titleContains(title));
     }
@@ -137,7 +140,6 @@ public class WebsiteDef {
 //            fail("Error - path is not correctly");
 //        }
 //    }
-
 
     @Then("^check if in random position the values are correctly \"([^\"]*)\"$")
     public void checkIfInRandomPositionTheValuesAreCorrectly(String position) throws Throwable {
@@ -180,7 +182,7 @@ public class WebsiteDef {
         if(paginationNext != null){
 
             //Get number of click to perform on "Next Button", get the rowNumber on the Table to verify against the contact
-            int rowNumber = 0;
+            int rowNumber;
             if(String.valueOf(p).length() == 1){
                 rowNumber = p + 1;
             } else {
@@ -232,7 +234,7 @@ public class WebsiteDef {
 
     private void checkValues(int position, List<WebElement> elements) {
         // Collections.sort(contacts);
-        Arrays.asList(contacts).sort((s1, s2) ->  s2.getGivenName().compareToIgnoreCase(s1.getGivenName()));
+        Arrays.sort(contacts, (s1, s2) -> s2.getGivenName().compareToIgnoreCase(s1.getGivenName()));
         
         assertEquals(elements.get(0).getText(), contacts[position].getGivenName());
         assertEquals(elements.get(1).getText(), contacts[position].getSurname());
@@ -282,7 +284,7 @@ public class WebsiteDef {
             //wait until table destroy and create another with data
             checkIfTableIsPopulated();
 
-            List<String> chunks = new LinkedList<String>();
+            List<String> chunks = new LinkedList<>();
             Matcher matcher = Pattern.compile("[0-9]+|[A-Z]+").matcher(driver.findElement(By.xpath(".//div[@id='Contacts_info']")).getText());
             while (matcher.find()) {
                 chunks.add( matcher.group() );
@@ -298,10 +300,9 @@ public class WebsiteDef {
         }
     }
 
-
     // check if keyword is equal to value of each column
-    public List<Contact> filterContact (String keyword){
-        return Arrays.stream(contacts).filter(
+    private List<Contact> filterContact(String keyword){
+        return stream(contacts).filter(
                 contact -> (
                         (contact.getGivenName().toLowerCase().contains(keyword.toLowerCase()) ||
                                 contact.getSurname().toLowerCase().contains(keyword.toLowerCase()) ||
@@ -312,7 +313,7 @@ public class WebsiteDef {
     }
 
     @When("^I search \"([^\"]*)\"$")
-    public void iSearch(String keyword) throws Throwable {
+    public void iSearch(String keyword) {
         //wait for element load
         checkIfTableIsPopulated();
 
@@ -331,13 +332,13 @@ public class WebsiteDef {
     }
 
     @Then("^the result on table should be only the values in columns that just searched, related to \"([^\"]*)\"$")
-    public void theResultOnTableShouldBeOnlyTheValuesInColumnsThatJustSearchedRelatedTo(String keyword) throws Throwable {
+    public void theResultOnTableShouldBeOnlyTheValuesInColumnsThatJustSearchedRelatedTo(String keyword) {
 
         //write text on search bar input
         LinkedList<Contact> filterContacts = new LinkedList<>(filterContact(keyword));
 
         // check number of results in table after filter in input search
-        List<String> chunks = new LinkedList<String>();
+        List<String> chunks = new LinkedList<>();
         Matcher matcher = Pattern.compile("[0-9]+|[A-Z]+").matcher(driver.findElement(By.xpath(".//div[@id='Contacts_info']")).getText());
         while (matcher.find()) {
             chunks.add( matcher.group() );
@@ -352,8 +353,8 @@ public class WebsiteDef {
 
                     List<WebElement> tds = list.get(i).findElements(By.xpath("td"));
                     boolean hasResult = false;
-                    for(int j = 0; j < tds.size(); j++){
-                        if(tds.get(j).getText().toLowerCase().contains(keyword.toLowerCase())){
+                    for (WebElement td : tds) {
+                        if (td.getText().toLowerCase().contains(keyword.toLowerCase())) {
                             hasResult = true;
                         }
                     }
@@ -371,7 +372,7 @@ public class WebsiteDef {
 
 
     @When("^I click button \"([^\"]*)\"$")
-    public void iClickButton(String button) throws Throwable {
+    public void iClickButton(String button) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         // get path of button
         String xPath =".//a[contains(text(),'ver mais')]";
@@ -392,81 +393,29 @@ public class WebsiteDef {
 
     }
 
-    @Then("^Should be go details page and show the details of contact by request \"([^\"]*)\"$")
-    public void shouldBeGoDetailsPageAndShowTheDetailsOfContactByRequest(String guid) throws Throwable {
+    @Then("^Should be go details page and show the details of contact by request guid$")
+    public void shouldBeGoDetailsPageAndShowTheDetailsOfContactByRequestGuid() throws MalformedURLException {
         //  driver.get(IP +"details.html?guid=" + guid);
-        Contact contactsByGuid = null;
+        Contact contactsByGuid;
 
         // get request query string guid and split by "=" and get last part of queryString
         if(linkGuid.length()> 0) {
             URL guidIdentify = new URL(linkGuid);
-            guid = guidIdentify.getQuery().split("=")[1].toString();
-            System.out.println(guid);
-            if(guid.equals("0")){
-                contactsByGuid = contact;
-            }else {
-                try {
-                    contactsByGuid = getDetailInforFromDB("http://contactsqs2.apphb.com/Service.svc/rest/contact/byguid/" + guid);
-                } catch (Exception e) {
-                    e.printStackTrace();
+            String guid = guidIdentify.getQuery().split("=")[1];
+
+            try {
+                contactsByGuid = getDetailInforFromDB("http://contactsqs2.apphb.com/Service.svc/rest/contact/byguid/" + guid);
+
+                if(contactsByGuid.getGuid().equals(guid)){
+                    assertEquals(contactsByGuid.getGuid(), guid);
+                    assertEquals(IP +"details.html?guid=" + guid, linkGuid);
+                }else{
                     fail("Error on get guid contact:" + guid);
                 }
-            }
-
-            if(!contactsByGuid.equals(0)){
-                if(contactsByGuid.getGuid() == guid){
-                    assertEquals(contactsByGuid.getGuid().toString(), guid);
-                    assertEquals(IP +"details.html?guid=" + guid, linkGuid);
-                }
-            }else{
+            } catch (Exception e) {
+                e.printStackTrace();
                 fail("Error on get guid contact:" + guid);
             }
-        }else {
-            //Error!
-            fail("Error - not found guid");
         }
-    }
-
-
-
-
-
-    // DETAILS PAGE
-
-    @Given("^Access to url of detail$")
-    public void accessToUrlOfDetail() {
-        driver.get(IP +"details.html");
-        WebDriverWait wait = new WebDriverWait(driver, 3);
-        wait.until(ExpectedConditions.titleIs("Detalhes de Contacto"));
-        assertEquals ("Detalhes de Contacto", driver.getTitle());
-
-    }
-
-    @Then("^the title of the detail page should be \"([^\"]*)\"$")
-    public void theTitleOfTheDetailPageShouldBe(String title) throws Throwable {
-        WebDriverWait wait = new WebDriverWait(driver, 3);
-        wait.until(ExpectedConditions.titleContains(title));
-    }
-
-    @Then("^I should be see photo of contact$")
-    public void iShouldBeSeePhotoOfContact() throws MalformedURLException {
-        driver.get(IP +"details.html?guid=e829ec04-e333-42a3-a380-28876b28472a");
-
-        WebDriverWait wait = new WebDriverWait(driver, 3);
-
-        // if ajax down load yet, show avatar foto
-        String xPath = "//section[@id='Section_top']/figure/div/img";
-        wait.until( ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
-
-        URL linkPhoto = new URL(driver.findElement(By.xpath(xPath)).getAttribute("src"));
-        if (!driver.getCurrentUrl().contains("guid")) {
-            String urlWebsite = linkPhoto.getPath().split("/")[2].toString();
-            assertEquals("profile.png", urlWebsite);
-        }else{
-            // if ajax load, check if photo exists
-            String urlWebsite = linkPhoto.getHost().toString();
-            assertEquals(urlWebsite, "randomuser.me");
-        }
-
     }
 }

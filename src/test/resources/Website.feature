@@ -67,17 +67,5 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page
   Scenario: on click button "ver mais" on table should be go details contact
     Given Access to url
     When I click button "ver mais"
-    Then Should be go details page and show the details of contact by request "guid"
+    Then Should be go details page and show the details of contact by request guid
 
-
- #############################################################
- #  DETAILS TESTS                                            #
- #############################################################
-
-  Scenario: Title of detail page should be "Detalhes de Contacto"
-    Given Access to url of detail
-    Then the title of the detail page should be "Detalhes de Contacto"
-
-  Scenario: On access detail page should be see photo of the contact
-    Given Access to url of detail
-    Then  I should be see photo of contact
