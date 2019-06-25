@@ -3,9 +3,9 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page Detai
   I want to access to the URL address provided for the landing page details contacts
   So that I can see the list of the contacts available
 
-#  Scenario: Title of detail page should be "Detalhes de Contacto"
-#    Given Access to url of detail
-#    Then the title of the detail page should be "Detalhes de Contacto"
+  Scenario: Title of detail page should be "Detalhes de Contacto"
+    Given Access to url of detail
+    Then the title of the detail page should be "Detalhes de Contacto"
 
   Scenario: On access detail page should be see photo of the contact
     Given Access to url of detail

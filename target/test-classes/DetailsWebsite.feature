@@ -6,11 +6,11 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page Detai
 #  Scenario: Title of detail page should be "Detalhes de Contacto"
 #    Given Access to url of detail
 #    Then the title of the detail page should be "Detalhes de Contacto"
-
-  Scenario: On access detail page should be see photo of the contact
-    Given Access to url of detail
-    Then  I should be see photo of contact
-
+#
+#  Scenario: On access detail page should be see photo of the contact
+#    Given Access to url of detail
+#    Then  I should be see photo of contact
+#
 #  Scenario Outline: On access detail page should be see details contact by guid
 #    Given Access to url of detail by "<guid>"
 #    Then  I should be see details of contact by "<guid>"

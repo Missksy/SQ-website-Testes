@@ -69,3 +69,7 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page
     When I click button "ver mais"
     Then Should be go details page and show the details of contact by request guid
 
+  Scenario: on click button "ver duplicados" on index page
+    Given Access to url
+    When I click on button "ver duplicados"
+    Then Should be go to duplicates page and show the duplicate contacts

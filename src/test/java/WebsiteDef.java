@@ -1,5 +1,6 @@
 import Model.Contact;
 import com.google.gson.Gson;
+import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -417,5 +418,24 @@ public class WebsiteDef {
                 fail("Error on get guid contact:" + guid);
             }
         }
+    }
+
+    @When("^I click on button \"([^\"]*)\"$")
+    public void iClickOnButton(String button) {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        // get path of button and check button
+        wait.until(ExpectedConditions.elementToBeClickable(By.linkText("ver duplicados")));
+
+        // get attribute href
+        WebElement link = driver.findElement(By.linkText("ver duplicados"));
+        linkGuid = link.getAttribute("href");
+
+        // click button
+        link.click();
+    }
+
+    @Then("^Should be go to duplicates page and show the duplicate contacts$")
+    public void shouldBeGoToDuplicatesPageAndShowTheDuplicateContacts() {
+        assertEquals(driver.getTitle(), "Contactos Duplicados");
     }
 }
