@@ -21,9 +21,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.stream;
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.fail;
 
@@ -120,20 +122,17 @@ public class DetailsWebsiteDef {
         wait.until( ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
         Thread.sleep(100);
 
-        URL linkPhoto = new URL(driver.findElement(By.xpath(xPath)).getAttribute("src"));
-
         if (!driver.getCurrentUrl().contains("guid")) {
+            URL linkPhoto = new URL(driver.findElement(By.xpath(xPath)).getAttribute("src"));
+
             String urlWebsite = linkPhoto.getPath().split("/")[2];
             assertEquals("profile.png", urlWebsite);
         }else{
             // if ajax load, check if photo exists
-            String urlWebsite = linkPhoto.getPath().split("/")[2];
-            String urlWebsiteHost = linkPhoto.getHost();
-            if(!urlWebsite.equals(("profile.png"))){
-                assertEquals(urlWebsiteHost, "34.90.69.90");
-            }else{
-                assertEquals("profile.png", urlWebsite);
-            }
+            //Updating...
+            URL linkPhoto = new URL(driver.findElement(By.xpath(xPath)).getAttribute("src"));
+            String urlWebsite = linkPhoto.getHost();
+            assertTrue(urlWebsite.contains("34.90.69.90"));
         }
 
     }

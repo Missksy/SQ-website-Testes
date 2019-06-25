@@ -5,7 +5,40 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Title of detail page should be \"Detalhes de Contacto\"",
+  "name": "On access detail page should be see photo of the contact",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "Access to url of detail",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "DetailsWebsiteDef.accessToUrlOfDetail()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I should be see photo of contact",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "DetailsWebsiteDef.iShouldBeSeePhotoOfContact()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
 });
