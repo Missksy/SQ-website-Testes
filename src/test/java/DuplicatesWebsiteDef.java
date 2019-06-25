@@ -15,11 +15,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
@@ -32,6 +32,8 @@ public class DuplicatesWebsiteDef {
     private static Contact[] contacts = null;
 
     private static LinkedList<Contact> deletedContacts;
+
+    private static LinkedList<String> removedFromTableContacts;
 
     @Before
     public void setUp() {
@@ -189,5 +191,65 @@ public class DuplicatesWebsiteDef {
         Alert alert = driver.switchTo().alert();
         assertEquals(alert.getText(), string);
         alert.dismiss();
+    }
+
+    @When("^I randomly select values$")
+    public void iRandomlySelectValues() {
+
+        WebDriverWait wait = new WebDriverWait(driver, 6);
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath(".//section[1]/form/table"), 0));
+
+        retrieveDuplicateArray();
+
+        removedFromTableContacts = new LinkedList<>();
+
+        List<WebElement> numberOfRows = driver.findElements(By.className("py-1"));
+        if (!numberOfRows.isEmpty()) {
+            assertEquals(numberOfRows.size(), deletedContacts.size());
+
+            List<WebElement> col = null;
+            int position;
+            for (int coll = 0; coll < numberOfRows.size(); coll++) {
+
+                //get col of the specific contact
+                position = (Math.random() <= 0.5) ? 1 : 2;
+                col = numberOfRows.get(coll).findElements(By.xpath("td"));
+                col.get(col.size() - position).findElement(By.xpath("div")).click();
+
+                //This means we are declining a contact. Add it to the contact List.
+                if(position == 1){
+                    //Get possible positions of this contact
+                    removedFromTableContacts.add(col.get(0).getAttribute("value"));
+                }
+            }
+        } else {
+            fail("XPath errado");
+        }
+    }
+
+    @Then("^I should be in the \"([^\"]*)\" Page$")
+    public void iShouldBeInThePage(String string) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        assertEquals(driver.getTitle(), string);
+
+        WebDriverWait wait = new WebDriverWait(driver, 6);
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath(".//table[@id='Contacts']/tbody/tr"), 0));
+
+        List<WebElement> elements = driver.findElements(By.xpath(".//div[@id='Contacts_info']"));
+        if (!elements.isEmpty()) {
+
+            List<String> chunks = new LinkedList<>();
+            Matcher matcher = Pattern.compile("[0-9]+|[A-Z]+").matcher(driver.findElement(By.xpath(".//div[@id='Contacts_info']")).getText());
+            while (matcher.find()) {
+                chunks.add(matcher.group());
+            }
+            if (chunks.isEmpty()) {
+                fail("chunks came empty. Verify if the XPath is correct");
+            } else {
+                assertEquals(Integer.parseInt(chunks.get(chunks.size() - 1)), contacts.length - removedFromTableContacts.size());
+            }
+        } else {
+            fail("Wrong XPath");
+        }
     }
 }

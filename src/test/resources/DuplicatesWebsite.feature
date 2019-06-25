@@ -15,3 +15,9 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page Dupli
     Given Access to duplicates url
     When I click the APPLICAR button
     Then I should see an alertBox, with the text "At least one group is blank"
+
+  Scenario: On submit form, with all information applied, It should redirect me to duplicate free
+    Given Access to duplicates url
+    When I randomly select values
+    And I click the APPLICAR button
+    Then I should be in the "Duplicate Free" Page
