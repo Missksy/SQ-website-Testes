@@ -122,15 +122,18 @@ public class DetailsWebsiteDef {
 
         URL linkPhoto = new URL(driver.findElement(By.xpath(xPath)).getAttribute("src"));
 
-        // TODO: validate if guid is correctly
-
         if (!driver.getCurrentUrl().contains("guid")) {
             String urlWebsite = linkPhoto.getPath().split("/")[2];
             assertEquals("profile.png", urlWebsite);
         }else{
             // if ajax load, check if photo exists
-            String urlWebsite = linkPhoto.getHost();
-            assertEquals(urlWebsite, "randomuser.me");
+            String urlWebsite = linkPhoto.getPath().split("/")[2];
+            String urlWebsiteHost = linkPhoto.getHost();
+            if(!urlWebsite.equals(("profile.png"))){
+                assertEquals(urlWebsiteHost, "34.90.69.90");
+            }else{
+                assertEquals("profile.png", urlWebsite);
+            }
         }
 
     }
@@ -259,4 +262,22 @@ public class DetailsWebsiteDef {
         driver.get(IP +"index.html");
     }
 
+
+    @Then("^check if in a position guid the image is loaded with \"([^\"]*)\" and \"([^\"]*)\" \\(\"([^\"]*)\"\\)$")
+    public void checkIfInAPositionGuidTheImageIsLoadedWithAnd(String width, String height, String guid) throws Throwable {
+        {
+            WebDriverWait wait = new WebDriverWait(driver, 6);
+            String xPath = ".//div/img@class='rounded-circle'";
+
+            // wait until load ajax
+            try {
+                wait.until(ExpectedConditions.not(ExpectedConditions.attributeContains(By.className("rounded-circle"), "src", "images/profile.png")));
+            } catch (TimeoutException ex) {
+                wait.until(ExpectedConditions.attributeContains(driver.findElement(By.xpath(xPath)), "src", contacts[Integer.parseInt(guid)].getPhotoUrl().toString()));
+                assertEquals(driver.findElement(By.className("rounded-circle")).getSize().getWidth(), Integer.parseInt(width));
+                assertEquals(driver.findElement(By.className("rounded-circle")).getSize().getHeight(), Integer.parseInt(height));
+            }
+
+        }
+    }
 }

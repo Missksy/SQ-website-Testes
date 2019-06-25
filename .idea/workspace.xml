@@ -4,8 +4,8 @@
     <list default="true" id="eea76920-811a-4df8-811e-a8474e9a3bde" name="Default Changelist" comment="QS test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/reports/test-report/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/reports/test-report/report.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/WebsiteDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebsiteDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/Website.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/Website.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DetailsWebsiteDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DetailsWebsiteDef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/DetailsWebsite.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/DetailsWebsite.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/Website.feature" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/Website.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/WebsiteDef.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/WebsiteDef.class" afterDir="false" />
     </list>
@@ -28,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/resources/Website.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" selection-start-line="16" selection-end-line="64" selection-end-column="39" />
+            <state relative-caret-position="-17">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -37,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/WebsiteDef.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2335">
-              <caret line="417" column="33" lean-forward="true" selection-start-line="417" selection-start-column="33" selection-end-line="417" selection-end-column="33" />
+            <state relative-caret-position="3060">
+              <caret line="417" column="13" selection-start-line="417" selection-start-column="13" selection-end-line="417" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#accessToUrl#0;class#WebsiteDef#0" />
@@ -48,6 +48,28 @@
                 <element signature="method#filterContact#0;class#WebsiteDef#0" />
                 <element signature="method#iSearch#0;class#WebsiteDef#0" />
                 <element signature="method#theResultOnTableShouldBeOnlyTheValuesInColumnsThatJustSearchedRelatedTo#0;class#WebsiteDef#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/DetailsWebsite.feature">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-201">
+              <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/DetailsWebsiteDef.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4284">
+              <caret line="281" selection-start-line="281" selection-end-line="281" />
+              <folding>
+                <element signature="e#10555#10556#0" expanded="true" />
+                <element signature="e#10599#10600#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -99,6 +121,8 @@
         <option value="$PROJECT_DIR$/src/test/java/WebsiteDetailsDef.java" />
         <option value="$PROJECT_DIR$/src/test/resources/WebsiteDetails.feature" />
         <option value="$PROJECT_DIR$/src/test/java/WebsiteDef.java" />
+        <option value="$PROJECT_DIR$/src/test/java/DetailsWebsiteDef.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/DetailsWebsite.feature" />
         <option value="$PROJECT_DIR$/src/test/resources/Website.feature" />
       </list>
     </option>
@@ -131,8 +155,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -174,6 +196,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -286,6 +310,8 @@
       <workItem from="1560880007092" duration="13805000" />
       <workItem from="1560896654874" duration="74000" />
       <workItem from="1560966427163" duration="3130000" />
+      <workItem from="1561421239890" duration="1557000" />
+      <workItem from="1561478015645" duration="1444000" />
     </task>
     <task id="LOCAL-00001" summary="QS test">
       <created>1556312395808</created>
@@ -326,39 +352,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 22h 45m 58s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 01h 11m 48s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 22h 46m 40s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 01h 12m 04s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 22h 47m 16s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 01h 12m 29s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 22h 54m 13s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 01h 14m 11s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 22h 55m 09s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 01h 15m 42s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 22h 56m 18s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 01h 20m 20s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 22h 58m 43s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 01h 20m 47s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 22h 59m 22s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 17h 10m 00s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 23h 13m 59s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 17h 10m 23s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CucumberRunner_(1) - 2019.06.20 at 23h 14m 09s.xml">
+    <history-entry file="CucumberRunner_(1) - 2019.06.25 at 17h 11m 41s.xml">
       <configuration name="CucumberRunner (1)" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85844000" />
+    <option name="totallyTimeSpent" value="88845000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -373,7 +399,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49835527" visible="true" weight="0.11886994" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49835527" visible="true" weight="0.122068234" />
       <window_info id="Structure" order="1" sideWeight="0.50164473" side_tool="true" weight="0.19509594" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -442,12 +468,76 @@
     <MESSAGE value="QS test" />
     <option name="LAST_COMMIT_MESSAGE" value="QS test" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/DetailsWebsiteDef.java</url>
+          <line>130</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/DetailsWebsiteDef.java</url>
+          <line>273</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/DetailsWebsiteDef.java</url>
+          <line>276</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="linkPhoto.getHost()" language="JAVA" />
+        <watch expression="driver.getCurrentUrl()" language="JAVA" />
+        <watch expression="!driver.getCurrentUrl().contains(&quot;guid&quot;)" language="JAVA" />
+        <watch expression="driver.getCurrentUrl().contains(&quot;guid&quot;)" language="JAVA" />
+        <watch expression="linkPhoto.getPath()" language="JAVA" />
+        <watch expression="String urlWebsite = linkPhoto.getPath().split(&quot;/&quot;)[2];" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>String urlWebsite = linkPhoto.getPath().split(&quot;/&quot;)[2];</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linkPhoto.getPath()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>driver.getCurrentUrl().contains(&quot;guid&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>!driver.getCurrentUrl().contains(&quot;guid&quot;)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>driver.getCurrentUrl()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>linkPhoto.getHost()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>aURL.getQuery().split(&quot;=&quot;)[1]</expression-string>
         <language-id>JAVA</language-id>
@@ -465,36 +555,6 @@
       </expression>
       <expression>
         <expression-string>link.getAttribute(&quot;href&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>driver.findElement(By.xpath(xPath))</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>driver.findElement(By.xpath(xPath)).getAttribute(&quot;href&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>driver.findElements(xPath).get(0).getText()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>driver.getPageSource()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>driver.getCurrentUrl()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>driver.getTitle()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -628,30 +688,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/WebsiteDetailsDef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/WebsiteDetails.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/CucumberRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/WebsiteDetailsDef.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/resources/WebsiteDetails.feature" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-remote-driver/3.11.0/selenium-remote-driver-3.11.0.jar!/org/openqa/selenium/remote/RemoteWebDriver.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1743">
@@ -680,13 +718,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/3.11.0/selenium-api-3.11.0.jar!/org/openqa/selenium/By.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="62" selection-start-line="62" selection-end-line="62" />
         </state>
       </provider>
     </entry>
@@ -795,10 +826,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/CucumberRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/seleniumhq/selenium/selenium-api/3.11.0/selenium-api-3.11.0.jar!/org/openqa/selenium/By.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/cucumber/cucumber-core/2.3.1/cucumber-core-2.3.1-sources.jar!/cucumber/runtime/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/DetailsWebsiteDef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4284">
+          <caret line="281" selection-start-line="281" selection-end-line="281" />
+          <folding>
+            <element signature="e#10555#10556#0" expanded="true" />
+            <element signature="e#10599#10600#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/WebsiteDef.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2335">
-          <caret line="417" column="33" lean-forward="true" selection-start-line="417" selection-start-column="33" selection-end-line="417" selection-end-column="33" />
+        <state relative-caret-position="3060">
+          <caret line="417" column="13" selection-start-line="417" selection-start-column="13" selection-end-line="417" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#accessToUrl#0;class#WebsiteDef#0" />
@@ -812,10 +875,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/DetailsWebsite.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-201">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/Website.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="64" selection-end-column="39" />
+        <state relative-caret-position="-17">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
