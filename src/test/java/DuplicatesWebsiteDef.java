@@ -223,7 +223,7 @@ public class DuplicatesWebsiteDef {
                 }
             }
         } else {
-            fail("XPath errado");
+            fail("XPath is incorrect");
         }
     }
 
