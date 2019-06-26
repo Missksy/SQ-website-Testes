@@ -12,7 +12,7 @@ Feature: Access to the Contacts Orchestrator Solution's (COS) Landing Page in pa
     Then the title of page should be "Duplicate Free"
 
   Scenario: On submit form, with all information applied, It should redirect me to duplicate free
-    Given Access to duplicates url
+    Given I Access to duplicates url
     When I random select values
     And I click on APLICAR button
     Then I should be to in the "Duplicate Free" Page

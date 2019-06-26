@@ -176,7 +176,11 @@ public class DuplicatesFreeWebsiteDef {
             for (int coll = 0; coll < numberOfRows.size(); coll++) {
 
                 //get col of the specific contact
-                position = (Math.random() <= 0.5) ? 1 : 2;
+                if (coll == 0) {
+                    position = 2;
+                }else{
+                    position = 1;
+                }
                 col = numberOfRows.get(coll).findElements(By.xpath("td"));
                 col.get(col.size() - position).findElement(By.xpath("div")).click();
 

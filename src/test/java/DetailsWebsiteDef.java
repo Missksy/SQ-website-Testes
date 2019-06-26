@@ -117,7 +117,7 @@ public class DetailsWebsiteDef {
         // if ajax down load yet, show avatar foto
         String xPath = "//section[@id='Section_top']/figure/div/img";
         wait.until( ExpectedConditions.visibilityOfElementLocated(By.xpath(xPath)));
-        Thread.sleep(100);
+        Thread.sleep(1000);
 
         if (!driver.getCurrentUrl().contains("guid")) {
             URL linkPhoto = new URL(driver.findElement(By.xpath(xPath)).getAttribute("src"));
